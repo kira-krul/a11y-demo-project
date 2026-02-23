@@ -1,5 +1,4 @@
-import { useDialog } from "../hooks/useDialog";
-import { useProductForm } from "../hooks/useProductForm";
+import { createPortal } from "react-dom";
 
 interface SizeColorModalProps {
   isOpen: boolean;
@@ -30,99 +29,72 @@ export function SizeColorModal({
   onColorSelect,
   onConfirm,
 }: SizeColorModalProps) {
-  const ref = useDialog(isOpen);
-  const { formProps, errors } = useProductForm(onConfirm);
-
   if (!isOpen) return null;
 
-  return (
-    <dialog ref={ref} onCancel={onClose}>
-      <form {...formProps}>
-        <div className="modal-header">
-          <h2>Select Size & Color</h2>
-          <button
-            className="modal-close"
-            onClick={onClose}
-            aria-label="Close modal"
-          >
-            ×
-          </button>
-        </div>
-
-        <div className="modal-body">
-          <div className="modal-section">
-            <fieldset className="sizes">
-              <legend>Size (US):</legend>
-              {sizes.map((size) => (
-                <label
-                  key={size}
-                  className={`size-button ${selectedSize === size ? "selected" : ""}`}
-                >
-                  <input
-                    type="radio"
-                    value={size}
-                    name="sizes"
-                    onChange={() => onSizeSelect(size)}
-                    checked={selectedSize === size}
-                    required
-                    className="visually-hidden-input"
-                  />
-                  {size}
-                </label>
-              ))}
-              <span
-                className="error-message"
-                role="alert"
-                aria-live="assertive"
-              >
-                {errors.size}
-              </span>
-            </fieldset>
+  return createPortal(
+    <>
+      <div className="modal-overlay" onClick={onClose} />
+      <div className="modal-wrap">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h2>Select Size & Color</h2>
+            <button
+              className="modal-close"
+              onClick={onClose}
+              aria-label="Close modal"
+            >
+              ×
+            </button>
           </div>
 
-          <div className="modal-section">
-            <fieldset className="colors">
-              <legend>Color:</legend>
-              {AVAILABLE_COLORS.map((color) => (
-                <label
-                  key={color.name}
-                  className={`color-button ${selectedColor === color.name ? "selected" : ""}`}
-                >
-                  <input
-                    type="radio"
-                    value={color.name}
-                    required
-                    name="colors"
-                    onChange={() => onColorSelect(color.name)}
-                    checked={selectedColor === color.name}
-                    className="visually-hidden-input"
-                    aria-label={color.name}
-                  />
-                  <span
-                    className="color-swatch"
-                    style={{ backgroundColor: color.hex }}
-                    role="presentation"
-                  />
-                  <span className="color-name" aria-hidden>
-                    {color.name}
-                  </span>
-                </label>
-              ))}
-              <span
-                className="error-message"
-                role="alert"
-                aria-live="assertive"
-              >
-                {errors.color}
-              </span>
-            </fieldset>
+          <div className="modal-body">
+            <div className="modal-section">
+              <div className="sizes">
+                <div className="modal-control-label">Size (US):</div>
+                {sizes.map((size) => (
+                  <button
+                    key={size}
+                    className={`size-button ${selectedSize === size ? "selected" : ""}`}
+                    onClick={() => onSizeSelect(size)}
+                  >
+                    {size}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="modal-section">
+              <div className="colors">
+                <div className="modal-control-label">Color:</div>
+                {AVAILABLE_COLORS.map((color) => (
+                  <button
+                    key={color.name}
+                    className={`color-button ${selectedColor === color.name ? "selected" : ""}`}
+                    onClick={() => onColorSelect(color.name)}
+                  >
+                    <span
+                      className="color-swatch"
+                      style={{ backgroundColor: color.hex }}
+                    />
+                    <span className="color-name">{color.name}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="modal-footer">
+            <button
+              className="add-to-cart-button"
+              onClick={onConfirm}
+              disabled={!selectedColor || !selectedSize}
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
-
-        <div className="modal-footer">
-          <button className="add-to-cart-button">Add to Cart</button>
-        </div>
-      </form>
-    </dialog>
+      </div>
+    </>,
+    document.body,
   );
 }

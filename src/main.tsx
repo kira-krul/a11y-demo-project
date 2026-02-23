@@ -1,13 +1,8 @@
-import React, { StrictMode } from "react";
-import ReactDOM, { createRoot } from "react-dom/client";
-import axe from "@axe-core/react";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
 import { worker } from "./mocks/browser";
-
-if (import.meta.env.DEV) {
-  setTimeout(() => axe(React, ReactDOM, 1000), 1000);
-}
 
 // Start MSW with configuration to ignore external requests (like images)
 worker

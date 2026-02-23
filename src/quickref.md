@@ -1,71 +1,38 @@
 * Add automated plugins
-```bash
+```sh
 pnpm install eslint-plugin-jsx-a11y --save-dev
-pnpm install @axe-core/react --save-dev
-```
-```jsx
-
-// main.tsx
-if (import.meta.env.DEV) {
-  setTimeout(() => axe(React, ReactDOM, 1000), 1000);
-}
-
-
 ```
 ```javascript
-// .eslint.config.js
-{
-    plugins: {
-      'jsx-a11y': jsxA11y,
-    },
-    rules: {
-      'jsx-a11y/alt-text': 'error',
-    },
-}
+// eslint.config.js
+import jsxA11y from "eslint-plugin-jsx-a11y";
+
+export default defineConfig([
+  globalIgnores(["dist"]),
+  jsxA11y.flatConfigs.recommended,
 ```
 
 * Fix eslint errors
 ```tsx
 // Header.tsx
 
-// <div> -> <Link>
-event.preventDefault();
-
-to="cart"
+<div> --> <button>
 
 // SizeColorModal.tsx
-  const handleEsc = useCallback<KeyboardEventHandler<HTMLDivElement>>(
-    (event) => {
-      if (event.key === "Escape") {
-        onClose();
-      }
-    },
-    [onClose],
-  );
-
-      onKeyUp={handleEsc}
-      role="presentation"
-
-              <label htmlFor="sizes-select">Size (US):</label>
-              <div className="sizes" id="sizes-select">
-
-              <label htmlFor="color-select">Color:</label>
-              <div className="colors" id="color-select">
-
-// ProductsPage.tsx
-            <img src={product.image} alt={product.name} />
+role="presentation"
 ```
 ```css
 // App.css
 .brand {
-  color: #8e8c8c;
+  color: #8c8c8c;
 ```
-* Add a link to skip navigation
+* Fix header for users who use tab to navigate
 ```jsx
-// Header.tsx
+// App.tsx
       <a href="#main-content" className="skip-nav">
         Skip to main content
       </a>
+
+            <main id="main-content" className="main-content">
 ```
 ```css
 // App.css
@@ -89,14 +56,33 @@ to="cart"
 * Fix everything immediately obvious with voiceover
 ```jsx
 // Header.tsx
-              <span
-                className="cart-badge"
-                aria-label={`${totalItems} item${totalItems > 1 ? "s" : ""} in cart`}
-              >
+          {itemsInCart ? (
+            <Link to="/cart" className="nav-link cart-link">
+              <CartIcon width={20} height={20} />
+              <span>Cart</span>
+              <span className="cart-badge">{itemsInCart}</span>
+              <span className="visually-hidden">
+                item{itemsInCart > 1 ? "s" : ""}
+              </span>
+            </Link>
+          ) : (
+            <button
+              onClick={() => showToast("The cart is empty!")}
+              className="nav-link cart-link"
+            >
+              <CartIcon width={20} height={20} />
+              <span>Cart</span>
+            </button>
+          )}
+
 // SingleProductPage.tsx
         <span aria-hidden>←</span> Back to Products
 
-          <p className="price" aria-description="Product price">
+          <p className="price" aria-label={`Product price: $${product.price}`}>
+
+// Toast.tsx
+      <span role="alert">{message}</span>
+
 // CartPage.tsx
 
                   aria-label={`Decrease quantity of ${item.product.name} in cart`}
@@ -104,10 +90,6 @@ to="cart"
                   aria-label={`Increase quantity of ${item.product.name} in cart`}
 
                 aria-label={`Remove ${item.product.name} from cart`}
-
-        <h2>{`Total: $${totalPrice.toFixed(2)}`}</h2>
-// Toast.tsx
-      <span role="alert">{message}</span>
 ```
 * Fix the modal
 ```jsx

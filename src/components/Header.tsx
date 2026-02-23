@@ -5,15 +5,12 @@ import CartIcon from "../assets/icons/cart.svg?react";
 import { useToast } from "../contexts";
 
 export function Header() {
-  const { totalItems } = useCart();
-  const navigate = useNavigate();
+  const { itemsInCart } = useCart();
   const { showToast } = useToast();
+  const navigate = useNavigate();
 
   return (
     <header className="header">
-      <a href="#main-content" className="skip-nav">
-        Skip to main content
-      </a>
       <div className="header-content">
         <Link to="/" className="logo">
           SneakShop
@@ -23,29 +20,22 @@ export function Header() {
             <HomeIcon width={20} height={20} />
             <span>Products</span>
           </Link>
-          <Link
-            onClick={(event) => {
-              if (totalItems) {
-                navigate("/cart");
-              } else {
-                event.preventDefault();
+          <div
+            onClick={() => {
+              if (!itemsInCart) {
                 showToast("The cart is empty!");
+              } else {
+                navigate("/cart");
               }
             }}
-            to="/cart"
             className="nav-link cart-link"
           >
             <CartIcon width={20} height={20} />
             <span>Cart</span>
-            {totalItems > 0 && (
-              <span
-                className="cart-badge"
-                aria-label={`${totalItems} item${totalItems > 1 ? "s" : ""} in cart`}
-              >
-                {totalItems}
-              </span>
+            {itemsInCart > 0 && (
+              <span className="cart-badge">{itemsInCart}</span>
             )}
-          </Link>
+          </div>
         </nav>
       </div>
     </header>

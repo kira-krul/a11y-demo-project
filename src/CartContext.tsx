@@ -8,7 +8,7 @@ interface CartContextType {
   removeFromCart: (productId: number, size: number, color: string) => void;
   updateQuantity: (productId: number, size: number, color: string, quantity: number) => void;
   clearCart: () => void;
-  totalItems: number;
+  itemsInCart: number;
   totalPrice: number;
 }
 
@@ -73,7 +73,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         removeFromCart,
         updateQuantity,
         clearCart,
-        totalItems,
+        itemsInCart: totalItems,
         totalPrice,
       }}
     >

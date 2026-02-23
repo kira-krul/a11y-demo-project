@@ -40,7 +40,7 @@ export function SingleProductPage() {
   return (
     <div className="product-page">
       <button onClick={() => navigate("/")} className="back-button">
-        <span aria-hidden>←</span> Back to Products
+        ← Back to Products
       </button>
 
       <div className="product-detail">
@@ -49,7 +49,7 @@ export function SingleProductPage() {
         <div className="product-content">
           <p className="brand">{product.brand}</p>
           <h1>{product.name}</h1>
-          <p className="price" aria-label={`Product price: $${product.price}`}>
+          <p className="price">
             ${product.price}
           </p>
           <h2>Description</h2>

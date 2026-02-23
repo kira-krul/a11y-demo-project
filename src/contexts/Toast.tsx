@@ -7,7 +7,7 @@ interface ToastProps extends ToastInfo {
 export function Toast({ message, type, id, removeToast }: ToastProps) {
   return (
     <div className={`toast toast-${type}`}>
-      <span role="alert">{message}</span>
+      <span>{message}</span>
       <button
         type="button"
         className="toast-close"
