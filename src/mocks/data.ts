@@ -1,0 +1,58 @@
+import type { Product } from '../types';
+
+export const products: Product[] = [
+  {
+    id: 1,
+    name: 'Air Max Classic',
+    brand: 'SneakCo',
+    price: 129.99,
+    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',
+    description: 'Classic design with maximum comfort. Perfect for everyday wear.',
+    sizes: [7, 8, 9, 10, 11, 12],
+  },
+  {
+    id: 2,
+    name: 'Urban Runner',
+    brand: 'StreetFeet',
+    price: 89.99,
+    image: 'https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=400',
+    description: 'Lightweight running shoe designed for city streets.',
+    sizes: [7, 8, 9, 10, 11],
+  },
+  {
+    id: 3,
+    name: 'Pro Basketball',
+    brand: 'SneakCo',
+    price: 159.99,
+    image: 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400',
+    description: 'High-top basketball shoe with excellent ankle support.',
+    sizes: [8, 9, 10, 11, 12, 13],
+  },
+  {
+    id: 4,
+    name: 'Casual Canvas',
+    brand: 'StreetFeet',
+    price: 59.99,
+    image: 'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=400',
+    description: 'Casual canvas sneaker for laid-back style.',
+    sizes: [7, 8, 9, 10, 11, 12],
+  },
+  {
+    id: 5,
+    name: 'Trail Blazer',
+    brand: 'OutdoorKicks',
+    price: 139.99,
+    image: 'https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=400',
+    description: 'Rugged trail running shoe for outdoor adventures.',
+    sizes: [8, 9, 10, 11, 12],
+  },
+  {
+    id: 6,
+    name: 'Speed Racer',
+    brand: 'SneakCo',
+    price: 179.99,
+    image: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400',
+    description: 'High-performance racing shoe for serious athletes.',
+    sizes: [7, 8, 9, 10, 11, 12, 13],
+  },
+];
