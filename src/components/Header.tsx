@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useCart } from "../CartContext";
 import HomeIcon from "../assets/icons/home.svg?react";
 import CartIcon from "../assets/icons/cart.svg?react";
@@ -7,7 +7,6 @@ import { useToast } from "../contexts";
 export function Header() {
   const { itemsInCart } = useCart();
   const { showToast } = useToast();
-  const navigate = useNavigate();
 
   return (
     <header className="header">
@@ -20,22 +19,24 @@ export function Header() {
             <HomeIcon width={20} height={20} />
             <span>Products</span>
           </Link>
-          <div
-            onClick={() => {
-              if (!itemsInCart) {
-                showToast("The cart is empty!");
-              } else {
-                navigate("/cart");
-              }
-            }}
-            className="nav-link cart-link"
-          >
-            <CartIcon width={20} height={20} />
-            <span>Cart</span>
-            {itemsInCart > 0 && (
+          {itemsInCart ? (
+            <Link to="/cart" className="nav-link cart-link">
+              <CartIcon width={20} height={20} />
+              <span>Cart</span>
               <span className="cart-badge">{itemsInCart}</span>
-            )}
-          </div>
+              <span className="visually-hidden">
+                item{itemsInCart > 1 ? "s" : ""}
+              </span>
+            </Link>
+          ) : (
+            <button
+              onClick={() => showToast("The cart is empty!")}
+              className="nav-link cart-link"
+            >
+              <CartIcon width={20} height={20} />
+              <span>Cart</span>
+            </button>
+          )}
         </nav>
       </div>
     </header>

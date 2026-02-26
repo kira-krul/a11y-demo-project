@@ -40,7 +40,7 @@ export function SingleProductPage() {
   return (
     <div className="product-page">
       <button onClick={() => navigate("/")} className="back-button">
-        ← Back to Products
+        <span aria-hidden>←</span> Back to Products
       </button>
 
       <div className="product-detail">

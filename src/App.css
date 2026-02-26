@@ -120,9 +120,25 @@
 .product-info {
   padding: 1.5rem;
 }
+.skip-nav {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-nav:focus {
+  left: 0;
+  width: max-content;
+  height: auto;
+  text-align: center;
+  padding: .5rem;
+  background: #222;
+}
 
 .brand {
-  color: #888;
+  color: #8c8c8c;
   font-size: 1rem;
   margin: 0 0 0.5rem 0;
   text-transform: uppercase;
@@ -701,6 +717,10 @@ dialog::backdrop {
   border-radius: 50%;
   border: 2px solid #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.continue-shopping-button {
+  color: white;
 }
 
 .color-name {

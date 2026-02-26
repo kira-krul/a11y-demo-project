@@ -10,7 +10,7 @@ export function CartPage() {
         <h1>Your Cart</h1>
         <div className="empty-cart">
           <p>Your cart is empty</p>
-          <Link to="/" className="button">
+          <Link to="/" className="button continue-shopping-button">
             Continue Shopping
           </Link>
         </div>
@@ -44,6 +44,7 @@ export function CartPage() {
                       item.quantity - 1,
                     )
                   }
+                  aria-label={`Decrease quantity of ${item.product.name} in cart`}
                 >
                   -
                 </button>
@@ -57,6 +58,7 @@ export function CartPage() {
                       item.quantity + 1,
                     )
                   }
+                  aria-label={`Increase quantity of ${item.product.name} in cart`}
                 >
                   +
                 </button>
@@ -66,6 +68,7 @@ export function CartPage() {
                 onClick={() =>
                   removeFromCart(item.product.id, item.size, item.color)
                 }
+                aria-label={`Remove ${item.product.name} from cart`}
               >
                 Remove
               </button>

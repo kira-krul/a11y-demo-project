@@ -1,14 +1,14 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { CartProvider } from './CartContext';
-import { ToastProvider } from './contexts/ToastProvider';
-import { Header } from './components/Header';
-import { Footer } from './components/Footer';
-import { ProductsPage } from './pages/ProductsPage';
-import { SingleProductPage } from './pages/SingleProductPage';
-import { CartPage } from './pages/CartPage';
-import { CheckoutPage } from './pages/CheckoutPage';
-import { ContactUsPage } from './pages/ContactUsPage';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CartProvider } from "./CartContext";
+import { ToastProvider } from "./contexts/ToastProvider";
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
+import { ProductsPage } from "./pages/ProductsPage";
+import { SingleProductPage } from "./pages/SingleProductPage";
+import { CartPage } from "./pages/CartPage";
+import { CheckoutPage } from "./pages/CheckoutPage";
+import { ContactUsPage } from "./pages/ContactUsPage";
+import "./App.css";
 
 function App() {
   return (
@@ -16,8 +16,11 @@ function App() {
       <ToastProvider>
         <CartProvider>
           <div className="app">
+            <a href="#main-content" className="skip-nav">
+              Skip to main content
+            </a>
             <Header />
-            <main className="main-content">
+            <main id="main-content" className="main-content">
               <Routes>
                 <Route path="/" element={<ProductsPage />} />
                 <Route path="/product/:id" element={<SingleProductPage />} />
