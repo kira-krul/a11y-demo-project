@@ -34,7 +34,7 @@ export function CartPage() {
               <p className="price">${item.product.price}</p>
             </div>
             <div className="item-controls">
-              <div className="quantity-controls">
+              <div className="quantity-controls" role="group" aria-label="Quantity">
                 <button
                   onClick={() =>
                     updateQuantity(
@@ -44,10 +44,11 @@ export function CartPage() {
                       item.quantity - 1,
                     )
                   }
+                  aria-label="Decrease quantity"
                 >
                   -
                 </button>
-                <span>{item.quantity}</span>
+                <span aria-label={`Quantity: ${item.quantity}`}>{item.quantity}</span>
                 <button
                   onClick={() =>
                     updateQuantity(
@@ -57,6 +58,7 @@ export function CartPage() {
                       item.quantity + 1,
                     )
                   }
+                  aria-label="Increase quantity"
                 >
                   +
                 </button>
@@ -66,6 +68,7 @@ export function CartPage() {
                 onClick={() =>
                   removeFromCart(item.product.id, item.size, item.color)
                 }
+                aria-label={`Remove ${item.product.name} from cart`}
               >
                 Remove
               </button>

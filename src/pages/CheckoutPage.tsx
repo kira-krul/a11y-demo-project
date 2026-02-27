@@ -49,50 +49,80 @@ export function CheckoutPage() {
         <div className="checkout-form">
           <h2>Shipping Information</h2>
           <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder="Full Name"
-              required
-              value={formData.name}
-              onChange={e => setFormData({ ...formData, name: e.target.value })}
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              required
-              value={formData.email}
-              onChange={e => setFormData({ ...formData, email: e.target.value })}
-            />
-            <input
-              type="text"
-              placeholder="Address"
-              required
-              value={formData.address}
-              onChange={e => setFormData({ ...formData, address: e.target.value })}
-            />
-            <input
-              type="text"
-              placeholder="City"
-              required
-              value={formData.city}
-              onChange={e => setFormData({ ...formData, city: e.target.value })}
-            />
-            <input
-              type="text"
-              placeholder="ZIP Code"
-              required
-              value={formData.zip}
-              onChange={e => setFormData({ ...formData, zip: e.target.value })}
-            />
+            <div className="form-field">
+              <label htmlFor="name">Full Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                autoComplete="name"
+                value={formData.name}
+                onChange={e => setFormData({ ...formData, name: e.target.value })}
+              />
+            </div>
+            <div className="form-field">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                autoComplete="email"
+                value={formData.email}
+                onChange={e => setFormData({ ...formData, email: e.target.value })}
+              />
+            </div>
+            <div className="form-field">
+              <label htmlFor="address">Street Address</label>
+              <input
+                type="text"
+                id="address"
+                name="address"
+                required
+                autoComplete="street-address"
+                value={formData.address}
+                onChange={e => setFormData({ ...formData, address: e.target.value })}
+              />
+            </div>
+            <div className="form-field">
+              <label htmlFor="city">City</label>
+              <input
+                type="text"
+                id="city"
+                name="city"
+                required
+                autoComplete="address-level2"
+                value={formData.city}
+                onChange={e => setFormData({ ...formData, city: e.target.value })}
+              />
+            </div>
+            <div className="form-field">
+              <label htmlFor="zip">ZIP Code</label>
+              <input
+                type="text"
+                id="zip"
+                name="zip"
+                required
+                autoComplete="postal-code"
+                value={formData.zip}
+                onChange={e => setFormData({ ...formData, zip: e.target.value })}
+              />
+            </div>
 
             <h2>Payment Information</h2>
-            <input
-              type="text"
-              placeholder="Card Number"
-              required
-              value={formData.cardNumber}
-              onChange={e => setFormData({ ...formData, cardNumber: e.target.value })}
-            />
+            <div className="form-field">
+              <label htmlFor="cardNumber">Card Number</label>
+              <input
+                type="text"
+                id="cardNumber"
+                name="cardNumber"
+                required
+                autoComplete="cc-number"
+                value={formData.cardNumber}
+                onChange={e => setFormData({ ...formData, cardNumber: e.target.value })}
+              />
+            </div>
 
             <button type="submit" disabled={submitting} className="submit-button">
               {submitting ? 'Processing...' : 'Place Order'}

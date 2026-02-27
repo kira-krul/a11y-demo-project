@@ -16,8 +16,11 @@ function App() {
       <ToastProvider>
         <CartProvider>
           <div className="app">
+            <a href="#main-content" className="skip-link">
+              Skip to main content
+            </a>
             <Header />
-            <main className="main-content">
+            <main id="main-content" className="main-content" tabIndex={-1}>
               <Routes>
                 <Route path="/" element={<ProductsPage />} />
                 <Route path="/product/:id" element={<SingleProductPage />} />

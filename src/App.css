@@ -4,6 +4,23 @@
   flex-direction: column;
 }
 
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #ff8a65;
+  color: #1a1a1a;
+  padding: 8px 16px;
+  z-index: 10000;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
 .header {
   background: #1a1a1a;
   border-bottom: 2px solid #333;
@@ -60,6 +77,15 @@
 .cart-link {
   position: relative;
   cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.cart-link:focus-visible {
+  outline: 2px solid #ff8a65;
+  outline-offset: 2px;
 }
 
 .cart-badge {
@@ -441,6 +467,18 @@
   gap: 1.5rem;
 }
 
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-field label {
+  font-size: 1rem;
+  color: #ccc;
+  font-weight: 500;
+}
+
 .checkout-form input {
   padding: 1rem 1.25rem;
   background: #1a1a1a;
@@ -787,6 +825,29 @@ dialog::backdrop {
 
 .footer-social a:hover {
   color: #ff8a65;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Global focus-visible styles */
+*:focus-visible {
+  outline: 2px solid #ff8a65;
+  outline-offset: 2px;
+}
+
+button:focus-visible {
+  outline: 2px solid #ff8a65;
+  outline-offset: 2px;
 }
 
 @media (max-width: 768px) {

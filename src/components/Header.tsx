@@ -15,12 +15,12 @@ export function Header() {
         <Link to="/" className="logo">
           SneakShop
         </Link>
-        <nav>
+        <nav aria-label="Main navigation">
           <Link to="/" className="nav-link">
-            <HomeIcon width={20} height={20} />
+            <HomeIcon width={20} height={20} aria-hidden="true" />
             <span>Products</span>
           </Link>
-          <div
+          <button
             onClick={() => {
               if (!itemsInCart) {
                 showToast("The cart is empty!");
@@ -29,13 +29,14 @@ export function Header() {
               }
             }}
             className="nav-link cart-link"
+            aria-label={`Shopping cart, ${itemsInCart} ${itemsInCart === 1 ? 'item' : 'items'}`}
           >
-            <CartIcon width={20} height={20} />
+            <CartIcon width={20} height={20} aria-hidden="true" />
             <span>Cart</span>
             {itemsInCart > 0 && (
-              <span className="cart-badge">{itemsInCart}</span>
+              <span className="cart-badge" aria-hidden="true">{itemsInCart}</span>
             )}
-          </div>
+          </button>
         </nav>
       </div>
     </header>

@@ -10,10 +10,10 @@ export function Footer() {
         <div className="footer-section">
           <h3>Shop</h3>
           <ul>
-            <li><a href="#New Arrivals">New Arrivals</a></li>
-            <li><a href="#Best Sellers">Best Sellers</a></li>
-            <li><a href="#Sale">Sale</a></li>
-            <li><a href="#Gift Cards">Gift Cards</a></li>
+            <li><a href="/new-arrivals">New Arrivals</a></li>
+            <li><a href="/best-sellers">Best Sellers</a></li>
+            <li><a href="/sale">Sale</a></li>
+            <li><a href="/gift-cards">Gift Cards</a></li>
           </ul>
         </div>
 
@@ -21,30 +21,30 @@ export function Footer() {
           <h3>Help</h3>
           <ul>
             <li><Link to="/contact-us">Contact Us</Link></li>
-            <li><a href="#Track Order">Track Order</a></li>
-            <li><a href="#Returns & Exchanges">Returns & Exchanges</a></li>
-            <li><a href="#Shipping Info">Shipping Info</a></li>
-            <li><a href="#Size Guide">Size Guide</a></li>
+            <li><a href="/track-order">Track Order</a></li>
+            <li><a href="/returns">Returns & Exchanges</a></li>
+            <li><a href="/shipping">Shipping Info</a></li>
+            <li><a href="/size-guide">Size Guide</a></li>
           </ul>
         </div>
 
         <div className="footer-section">
           <h3>About</h3>
           <ul>
-            <li><a href="#Our Story">Our Story</a></li>
-            <li><a href="#Careers">Careers</a></li>
-            <li><a href="#Sustainability">Sustainability</a></li>
-            <li><a href="#Press">Press</a></li>
+            <li><a href="/our-story">Our Story</a></li>
+            <li><a href="/careers">Careers</a></li>
+            <li><a href="/sustainability">Sustainability</a></li>
+            <li><a href="/press">Press</a></li>
           </ul>
         </div>
 
         <div className="footer-section">
           <h3>Legal</h3>
           <ul>
-            <li><a href="#Privacy Policy">Privacy Policy</a></li>
-            <li><a href="#Terms of Service">Terms of Service</a></li>
-            <li><a href="#Cookie Policy">Cookie Policy</a></li>
-            <li><a href="#Accessibility">Accessibility</a></li>
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+            <li><a href="/cookies">Cookie Policy</a></li>
+            <li><a href="/accessibility">Accessibility</a></li>
           </ul>
         </div>
       </div>
@@ -52,14 +52,14 @@ export function Footer() {
       <div className="footer-bottom">
         <p>&copy; {new Date().getFullYear()} SneakShop. All rights reserved.</p>
         <div className="footer-social">
-          <a href="#Facebook" aria-label="Facebook">
-            <FacebookIcon width={24} height={24} />
+          <a href="https://facebook.com/sneakshop" aria-label="Facebook">
+            <FacebookIcon width={24} height={24} aria-hidden="true" />
           </a>
-          <a href="#Twitter" aria-label="Twitter">
-            <TwitterIcon width={24} height={24} />
+          <a href="https://twitter.com/sneakshop" aria-label="Twitter">
+            <TwitterIcon width={24} height={24} aria-hidden="true" />
           </a>
-          <a href="#Instagram" aria-label="Instagram">
-            <InstagramIcon width={24} height={24} />
+          <a href="https://instagram.com/sneakshop" aria-label="Instagram">
+            <InstagramIcon width={24} height={24} aria-hidden="true" />
           </a>
         </div>
       </div>

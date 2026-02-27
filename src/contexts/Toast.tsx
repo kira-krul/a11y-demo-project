@@ -6,7 +6,12 @@ interface ToastProps extends ToastInfo {
 
 export function Toast({ message, type, id, removeToast }: ToastProps) {
   return (
-    <div className={`toast toast-${type}`}>
+    <div
+      className={`toast toast-${type}`}
+      role="alert"
+      aria-live="polite"
+      aria-atomic="true"
+    >
       <span>{message}</span>
       <button
         type="button"
